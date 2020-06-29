@@ -1,0 +1,62 @@
+{% extends 'layout.njk' %}
+
+{% block bold %}
+    <a href="/about">Sobre</a>
+    <a class="bold" href="/recipes">Receitas</a>
+{% endblock %}
+
+{% block content %}
+    <section class="details">
+        <div class="details__container" id="margin-top">
+
+            <div class="details__recipe">
+                <div class="details__image">
+                    <img src="{{receipts.image}}" alt="recipe-image">
+                </div>
+
+                <div class="details__title">
+                    <p>{{receipts.title}}</p>
+                </div>
+
+                <div class="details__author">
+                    <p>{{receipts.author}}</p>
+                </div>
+
+                <div class="details__ingredients">
+                    <p class="title_format">Ingredientes
+                        <button onclick="hiddenList()" class="small_button">ESCONDER</button>
+                    </p>
+                    <ul id="list">
+                        {% for item in receipts.ingredients%}
+                            <li class="paragraph">{{item}};</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="details__preparation">
+                    <p class="title_format">Modo de preparo
+                        <button onclick="hiddenPreparation()" class="small_button">MOSTRAR</button>
+                    </p>
+                    <p id="preparation" class="paragraph">{{receipts.preparation}}</p>
+                </div>
+
+                <div class="details__information">
+                    <p class="title_format">Informações adicionais
+                        <button onclick="hiddenInformation()" class="small_button">ESCONDER</button>
+                    </p>
+                    <p id="information" class="paragraph">{{receipts.information}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/scripts/scripts.js"></script>
+
+    {# {% block footer %}
+        <footer class="postion-absolute">
+            <div class="footer__container">
+                <p>Todos direitos reservados, receitas Foodfy</p>
+            </div>
+        </footer>
+    {% endblock %} #}
+{% endblock %}
